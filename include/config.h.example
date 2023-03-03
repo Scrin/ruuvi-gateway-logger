@@ -1,0 +1,20 @@
+#define WIFI_SSID "MyHomeNetwork"
+#define WIFI_PASSWORD "hunter1"
+
+#define HOSTNAME "ruuvi-gateway-logger"
+
+// uncomment to enable MQTT
+// #define MQTT_SERVER "mqtt.hostname.or.ip"
+#define MQTT_PORT 1883
+#define MQTT_CLIENT_NAME "ruuvi-gateway-logger"
+#define MQTT_USERNAME ""
+#define MQTT_PASSWORD ""
+#define MQTT_PREFIX "ruuvi-gateway-logger"
+
+// uncomment to enable rsyslog
+// #define SYSLOG_SERVER "rsyslog.hostname.or.ip"
+#define SYSLOG_PORT 514
+#define SYSLOG_APPNAME "ruuvi-gateway"
+
+#define OTA_UPDATE_USERNAME "admin"
+#define OTA_UPDATE_PASSWORD "hunter2"
