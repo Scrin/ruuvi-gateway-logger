@@ -2,7 +2,8 @@
 
 ESP8266 based NodeMCU remote logger for Ruuvi Gateway.
 Ruuvi Gateway prints all kinds of useful logs over the serial, but unless you have plugged the gateway directly into a computer or other usb host capable device, you can't really get to the logs.
-So, instead of that, you can solder some wires onto the gateway PCB and connect them to a ESP8266 based NodeMCU which reads the serial and forwards the messages over to a syslog server and/or MQTT. More info in [this](https://f.ruuvi.com/t/ruuvi-gateway-logs-to-a-remote-syslog-server-the-diy-way/6130) forum thread.
+So, instead of that, you can solder some wires onto the gateway PCB and connect them to a ESP8266 based NodeMCU which reads the serial and forwards the messages over to a syslog server and/or MQTT.
+More info in [this](https://f.ruuvi.com/t/ruuvi-gateway-logs-to-a-remote-syslog-server-the-diy-way/6130) forum thread.
 
 ## Setup
 
@@ -10,6 +11,8 @@ So, instead of that, you can solder some wires onto the gateway PCB and connect 
 - Copy `include/config.h.example` as `include/config.h`
 - Set your configuration in `config.h`
 - Build/flash like any other PlatformIO project
+- Connect the RX to the "alternative RX pin" (GPIO13, labeled D7) (alternative pins are used to avoid interference from the default RX/TX pins during boot and flashing)
+- Power the NodeMCU as you wish, I used 3.3V and GND directly from the gateway
 
 ## Over The Air update
 
