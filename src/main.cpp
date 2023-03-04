@@ -37,7 +37,7 @@ WiFiUDP udpClient;
 Syslog syslog(udpClient, SYSLOG_PROTO_IETF);
 #endif
 
-char line[8192];      // buffer for reading lines of log over serial
+char line[16384];     // buffer for reading lines of log over serial
 size_t lineIndex = 0; // current index in the line buffer
 
 void mqttLoop()
@@ -122,15 +122,14 @@ void loop()
   mqttLoop();
   httpUpdateServer.handleClient();
 
-  // read up to 1kB in a single loop() iteration
-  for (int i = 0; i < 1024; i++)
+  while (true)
   {
     int c = Serial.read();
     if (c < 0) // timeout from reading the serial, ie. no data (yet)
       break;
 
     line[lineIndex++] = c;
-    if (c == '\n' || c == '\r' || c == 0 || lineIndex >= 8192)
+    if (c == '\n' || c == '\r' || c == 0 || lineIndex >= 16384)
     {
       if (lineIndex > 1)
       {
